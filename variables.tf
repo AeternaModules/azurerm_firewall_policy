@@ -1,6 +1,6 @@
-variable "firewall_policys" {
+variable "firewall_policies" {
   description = <<EOT
-Map of firewall_policys, attributes below
+Map of firewall_policies, attributes below
 Required:
     - location
     - name
@@ -63,12 +63,12 @@ EOT
     auto_learn_private_ranges_enabled = optional(bool)
     base_policy_id                    = optional(string)
     private_ip_ranges                 = optional(list(string))
-    sku                               = optional(string, "Standard")
+    sku                               = optional(string) # Default: "Standard"
     sql_redirect_allowed              = optional(bool)
     tags                              = optional(map(string))
-    threat_intelligence_mode          = optional(string, "Alert")
+    threat_intelligence_mode          = optional(string) # Default: "Alert"
     dns = optional(object({
-      proxy_enabled = optional(bool, false)
+      proxy_enabled = optional(bool) # Default: false
       servers       = optional(list(string))
     }))
     explicit_proxy = optional(object({

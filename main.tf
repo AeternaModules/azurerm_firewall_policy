@@ -1,5 +1,5 @@
-resource "azurerm_firewall_policy" "firewall_policys" {
-  for_each = var.firewall_policys
+resource "azurerm_firewall_policy" "firewall_policies" {
+  for_each = var.firewall_policies
 
   location                          = each.value.location
   name                              = each.value.name
