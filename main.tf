@@ -46,7 +46,7 @@ resource "azurerm_firewall_policy" "firewall_policies" {
       default_log_analytics_workspace_id = insights.value.default_log_analytics_workspace_id
       enabled                            = insights.value.enabled
       dynamic "log_analytics_workspace" {
-        for_each = insights.value.log_analytics_workspace != null ? [insights.value.log_analytics_workspace] : []
+        for_each = insights.value.log_analytics_workspace != null ? insights.value.log_analytics_workspace : []
         content {
           firewall_location = log_analytics_workspace.value.firewall_location
           id                = log_analytics_workspace.value.id
@@ -62,14 +62,14 @@ resource "azurerm_firewall_policy" "firewall_policies" {
       mode           = intrusion_detection.value.mode
       private_ranges = intrusion_detection.value.private_ranges
       dynamic "signature_overrides" {
-        for_each = intrusion_detection.value.signature_overrides != null ? [intrusion_detection.value.signature_overrides] : []
+        for_each = intrusion_detection.value.signature_overrides != null ? intrusion_detection.value.signature_overrides : []
         content {
           id    = signature_overrides.value.id
           state = signature_overrides.value.state
         }
       }
       dynamic "traffic_bypass" {
-        for_each = intrusion_detection.value.traffic_bypass != null ? [intrusion_detection.value.traffic_bypass] : []
+        for_each = intrusion_detection.value.traffic_bypass != null ? intrusion_detection.value.traffic_bypass : []
         content {
           description           = traffic_bypass.value.description
           destination_addresses = traffic_bypass.value.destination_addresses

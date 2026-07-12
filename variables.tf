@@ -86,20 +86,20 @@ EOT
     insights = optional(object({
       default_log_analytics_workspace_id = string
       enabled                            = bool
-      log_analytics_workspace = optional(object({
+      log_analytics_workspace = optional(list(object({
         firewall_location = string
         id                = string
-      }))
+      })))
       retention_in_days = optional(number)
     }))
     intrusion_detection = optional(object({
       mode           = optional(string)
       private_ranges = optional(list(string))
-      signature_overrides = optional(object({
+      signature_overrides = optional(list(object({
         id    = optional(string)
         state = optional(string)
-      }))
-      traffic_bypass = optional(object({
+      })))
+      traffic_bypass = optional(list(object({
         description           = optional(string)
         destination_addresses = optional(set(string))
         destination_ip_groups = optional(set(string))
@@ -108,7 +108,7 @@ EOT
         protocol              = string
         source_addresses      = optional(set(string))
         source_ip_groups      = optional(set(string))
-      }))
+      })))
     }))
     threat_intelligence_allowlist = optional(object({
       fqdns        = optional(set(string))
