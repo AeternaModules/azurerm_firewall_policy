@@ -1,3 +1,7 @@
+output "firewall_policies_id" {
+  description = "Map of id values across all firewall_policies, keyed the same as var.firewall_policies"
+  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => v.id }
+}
 output "firewall_policies_auto_learn_private_ranges_enabled" {
   description = "Map of auto_learn_private_ranges_enabled values across all firewall_policies, keyed the same as var.firewall_policies"
   value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => v.auto_learn_private_ranges_enabled }
