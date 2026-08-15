@@ -16,11 +16,11 @@ output "firewall_policies_child_policies" {
 }
 output "firewall_policies_dns" {
   description = "Map of dns values across all firewall_policies, keyed the same as var.firewall_policies"
-  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => v.dns if v.dns != null && length(v.dns) > 0 }
+  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => one(v.dns) if v.dns != null && length(v.dns) > 0 }
 }
 output "firewall_policies_explicit_proxy" {
   description = "Map of explicit_proxy values across all firewall_policies, keyed the same as var.firewall_policies"
-  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => v.explicit_proxy if v.explicit_proxy != null && length(v.explicit_proxy) > 0 }
+  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => one(v.explicit_proxy) if v.explicit_proxy != null && length(v.explicit_proxy) > 0 }
 }
 output "firewall_policies_firewalls" {
   description = "Map of firewalls values across all firewall_policies, keyed the same as var.firewall_policies"
@@ -28,15 +28,15 @@ output "firewall_policies_firewalls" {
 }
 output "firewall_policies_identity" {
   description = "Map of identity values across all firewall_policies, keyed the same as var.firewall_policies"
-  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "firewall_policies_insights" {
   description = "Map of insights values across all firewall_policies, keyed the same as var.firewall_policies"
-  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => v.insights if v.insights != null && length(v.insights) > 0 }
+  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => one(v.insights) if v.insights != null && length(v.insights) > 0 }
 }
 output "firewall_policies_intrusion_detection" {
   description = "Map of intrusion_detection values across all firewall_policies, keyed the same as var.firewall_policies"
-  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => v.intrusion_detection if v.intrusion_detection != null && length(v.intrusion_detection) > 0 }
+  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => one(v.intrusion_detection) if v.intrusion_detection != null && length(v.intrusion_detection) > 0 }
 }
 output "firewall_policies_location" {
   description = "Map of location values across all firewall_policies, keyed the same as var.firewall_policies"
@@ -72,7 +72,7 @@ output "firewall_policies_tags" {
 }
 output "firewall_policies_threat_intelligence_allowlist" {
   description = "Map of threat_intelligence_allowlist values across all firewall_policies, keyed the same as var.firewall_policies"
-  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => v.threat_intelligence_allowlist if v.threat_intelligence_allowlist != null && length(v.threat_intelligence_allowlist) > 0 }
+  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => one(v.threat_intelligence_allowlist) if v.threat_intelligence_allowlist != null && length(v.threat_intelligence_allowlist) > 0 }
 }
 output "firewall_policies_threat_intelligence_mode" {
   description = "Map of threat_intelligence_mode values across all firewall_policies, keyed the same as var.firewall_policies"
@@ -80,6 +80,6 @@ output "firewall_policies_threat_intelligence_mode" {
 }
 output "firewall_policies_tls_certificate" {
   description = "Map of tls_certificate values across all firewall_policies, keyed the same as var.firewall_policies"
-  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => v.tls_certificate if v.tls_certificate != null && length(v.tls_certificate) > 0 }
+  value       = { for k, v in azurerm_firewall_policy.firewall_policies : k => one(v.tls_certificate) if v.tls_certificate != null && length(v.tls_certificate) > 0 }
 }
 
